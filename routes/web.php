@@ -24,3 +24,6 @@ Route::post('/ajouter/traitement', [MembresController::class, 'ajouter_membre_tr
 Route::get('/modifier/{id}', [MembresController::class, 'modifier_membre']);
 //Envoi de la modification
 Route::post('/modifier/traitement', [MembresController::class, 'modifier_membre_traitement']);
+//Page de suppression
+Route::get('/supprimer/{id}', [MembresController::class, 'supprimer_membre']);
+

@@ -33,7 +33,7 @@
                                 <td class="border border-dark">{{ $membre->nom }}</td>
                                 <td class="border border-dark">
                                     <a href="/modifier/{{ $membre->id }}">Modifier</a>
-                                    <a href="#">Supprimer</a>
+                                    <a href="/supprimer/{{ $membre->id }}">Supprimer</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -46,6 +46,7 @@
                             </tr>
                         </tfoot>
                     </table>
+                    {{ $membres->links() }}
                 </div>
             </div>
         </div>

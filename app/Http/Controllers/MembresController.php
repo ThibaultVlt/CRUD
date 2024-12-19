@@ -9,7 +9,7 @@ class MembresController extends Controller
 {
     public function liste_membres()
     {
-        $membres = Membres::all();
+        $membres = Membres::paginate(10); //all()=afficher tout, paginate(np d'éléments visible)=affichage du nombre a voir avant page suivante
         return view('membres.liste', compact('membres'));
     }
 
@@ -52,5 +52,13 @@ class MembresController extends Controller
         $membre->update();
 
         return redirect('/')->with('status', 'Le Membre a bien été modifié.');
+    }
+
+    public function supprimer_membre($id)
+    {
+        $membre = Membres::find($id);
+        $membre->delete();
+
+        return redirect('/')->with('status', 'Le Membre a bien été supprimé.');
     }
 }
