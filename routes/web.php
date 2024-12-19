@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MembresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::(Méthode utilisé get, set, post ....)('/le chemin d'accès', [le controller::class, 'nom de la fonction (dans le controller)']);
+Route::get('/', [MembresController::class, 'liste_membres']);
+Route::get('/ajouter', [MembresController::class, 'ajouter_membre']);
+Route::post('/ajouter/traitement', [MembresController::class, 'ajouter_membre_traitement']);
