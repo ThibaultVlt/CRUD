@@ -10,21 +10,22 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col">
-                    <h1 class="text-center mb-4">Ajouter un Membre</h1>
+                    <h1 class="text-center mb-4">Modifier un Membre</h1>
                         @foreach ($errors->all() as $error)
                             <p class="text-danger">{{ $error }}</p>
                         @endforeach
-                    <form action="/ajouter/traitement" method="POST" class="w-50">
+                    <form action="/modifier/traitement" method="POST" class="w-50">
                         @csrf
+                        <input type="text" name="id" class="d-none" value="{{ $membres->id }}"><!-- Utiliser pour avoir l'identifiant à modifier -->
                         <div class="mb-3 d-flex gap-2">
                             <label for="Prenom" class="form-label">Prénom Membre</label>
-                            <input type="text" class="form-control w-50" id="Prenom" name="prenom" require>
+                            <input type="text" class="form-control w-50" id="Prenom" name="prenom" value="{{ $membres->prenom }}">
                         </div>
                         <div class="mb-3 d-flex gap-2">
                             <label for="Nom" class="form-label">Nom Membre</label>
-                            <input type="text" class="form-control w-50" id="Nom" name="nom" require>
+                            <input type="text" class="form-control w-50" id="Nom" name="nom" value="{{ $membres->nom }}">
                         </div>
-                        <button type="submit" class="btn btn-success">Enregistrer le Membre</button>
+                        <button type="submit" class="btn btn-success">Modifier le Membre</button>
                         <button type="reset" class="btn btn-primary">Annuler</button>
                     <form>
                 </div>

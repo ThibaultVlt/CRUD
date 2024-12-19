@@ -11,6 +11,11 @@
             <div class="row">
                 <div class="col">
                     <h1 class="text-center">Liste des membres</h1>
+                    @if(session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <table class="table border border-dark">
                         <thead>
                             <tr>
@@ -21,33 +26,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($membres as $membre)
                             <tr>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
+                                <td class="border border-dark">{{ $membre->id }}</td>
+                                <td class="border border-dark">{{ $membre->prenom }}</td>
+                                <td class="border border-dark">{{ $membre->nom }}</td>
                                 <td class="border border-dark">
-                                    <a href="#">Modifier</a>
+                                    <a href="/modifier/{{ $membre->id }}">Modifier</a>
                                     <a href="#">Supprimer</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark">
-                                    <a href="#">Modifier</a>
-                                    <a href="#">Supprimer</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark"></td>
-                                <td class="border border-dark">
-                                    <a href="#">Modifier</a>
-                                    <a href="#">Supprimer</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr>

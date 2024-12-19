@@ -14,6 +14,13 @@ use App\Http\Controllers\MembresController;
 |
 */
 //Route::(Méthode utilisé get, set, post ....)('/le chemin d'accès', [le controller::class, 'nom de la fonction (dans le controller)']);
+//Page principale
 Route::get('/', [MembresController::class, 'liste_membres']);
+//Page d'ajout
 Route::get('/ajouter', [MembresController::class, 'ajouter_membre']);
+//Envoi de l'ajout
 Route::post('/ajouter/traitement', [MembresController::class, 'ajouter_membre_traitement']);
+//Page de modification
+Route::get('/modifier/{id}', [MembresController::class, 'modifier_membre']);
+//Envoi de la modification
+Route::post('/modifier/traitement', [MembresController::class, 'modifier_membre_traitement']);
