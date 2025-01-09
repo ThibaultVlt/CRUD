@@ -75,9 +75,6 @@ class MembresControllerTest extends TestCase
         {
             $membre = Membres::factory()->create();
 
-            // Log ID du membre pour vérifier
-            \Log::info('Membre ID : ' . $membre->id);
-
             $response = $this->delete("/supprimer/{$membre->id}");
 
             $this->assertDatabaseMissing('membres', [
