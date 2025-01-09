@@ -70,4 +70,21 @@ class MembresControllerTest extends TestCase
             $response->assertRedirect('/');
             $response->assertSessionHas('status', 'Le Membre a bien été modifié.');
         }
+
+        public function testSupprimerMembreSupprimeLeMembre()
+        {
+            $membre = Membres::factory()->create();
+
+            // Log ID du membre pour vérifier
+            \Log::info('Membre ID : ' . $membre->id);
+
+            $response = $this->delete("/supprimer/{$membre->id}");
+
+            $this->assertDatabaseMissing('membres', [
+                'id' => $membre->id,
+            ]);
+
+            $response->assertRedirect('/');
+            $response->assertSessionHas('status', 'Le Membre a bien été supprimé.');
+        }
     }
